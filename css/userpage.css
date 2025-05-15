@@ -1,0 +1,465 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #00713c;
+}
+
+#navButton {
+  display: block;
+  color: white;
+  padding: 10px;
+  height: 100%;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: #00713c;
+  color: white;
+}
+
+#navButton:hover {
+  background-color: #00713c;
+  height: 100%;
+}
+
+#navButton.btnActive {
+  background-color: #00713c;
+}
+
+li {
+  margin-left: 15px;
+  padding-bottom: 10px;
+}
+
+#searchBar {
+  border-radius: 50px;
+  width: 300px;
+}
+
+#navIcon {
+  margin-right: 4px;
+  border-radius: 30px;
+  padding: 15px;
+}
+
+#navIcon:hover {
+  background-color: #00713c;
+}
+
+.card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.background_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.background_image {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.main_content {
+  min-height: 200px; /* Changed from fixed height */
+  position: relative;
+  z-index: 1;
+  padding: 2rem 0; /* Add padding */
+}
+
+.cardContent {
+  position: relative; /* Changed from absolute */
+  top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  margin-bottom: 2rem; /* Add space below cards */
+}
+
+.forstHubFaqs {
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  padding: 1rem 0;
+}
+
+/* Desktop specific adjustments */
+@media (min-width: 768px) {
+  .cardContent {
+    margin-top: -70px; /* Maintain overlap effect */
+    margin-bottom: 0;
+  }
+
+  .forstHubFaqs {
+    margin-top: -30px; /* Adjust overlap as needed */
+    padding-top: 2rem;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .main_content {
+    padding-top: 1rem;
+  }
+
+  #mobileTopProducts {
+    margin-bottom: 2rem;
+  }
+  .forstHubFaqs {
+    padding-top: 2rem;
+    margin-top: 0;
+  }
+
+  .timer-container {
+    top: 50%; /* Adjust timer position */
+    transform: translate(-50%, -50%);
+  }
+}
+
+.timer-text {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Carousel Container */
+#mobileTopProducts {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Carousel Inner */
+.carousel-inner {
+  height: 100%;
+  transition: transform 0.6s ease-in-out; /* Smoother transition */
+}
+
+/* Carousel Item */
+.carousel-item {
+  height: 100%;
+  float: left; /* Fix for width calculation */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Image Fix */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Changed from cover to contain */
+  object-position: center;
+  will-change: transform; /* Optimize animation */
+}
+
+/* Control Buttons */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 8%;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+.shop_categories {
+  margin-top: 120px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.category_card {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #fffcdc;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.category_card img {
+  width: 190px;
+  height: 190px;
+  margin-top: 25px;
+}
+
+.category_card h3 {
+  padding-bottom: 38px;
+  font-weight: bold;
+}
+
+/* Simplified Timer Styles */
+.timer-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  z-index: 1000;
+  width: 600px;
+}
+
+#userTimerDisplay {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  font-family: "Courier New", monospace;
+}
+
+.session-info {
+  font-size: 1.2rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.session-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.session-badge.cubicle {
+  background-color: #003f22;
+  color: white;
+}
+
+.session-badge.room {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* Progress bar styles */
+.progress {
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progress-bar {
+  transition: width 1s linear;
+}
+
+.progress-bar.cubicle {
+  background-color: #003f22;
+}
+
+.progress-bar.room {
+  background-color: #0d6efd;
+}
+
+.exceeded-time {
+  animation: flashWarning 1s infinite;
+}
+
+@media (max-width: 768px) {
+  .timer-container {
+    top: 400px;
+    width: 400px;
+  }
+  .timer-text {
+    font-size: 26px;
+  }
+  #mobileTopProducts {
+    height: 400px;
+  }
+
+  .carousel-item {
+    padding: 0 15px;
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+  }
+}
+
+/* Existing animation - keep as is */
+@keyframes flashWarning {
+  0%,
+  100% {
+    background-color: #ffc107;
+  }
+  50% {
+    background-color: #ff9800;
+  }
+}
+
+/* Booking Modal Styles */
+/* Booking Modal Scroll Styles */
+.modal-dialog-scrollable .modal-content {
+  overflow: visible;
+}
+
+.modal-dialog-scrollable .modal-body {
+  padding-top: 0;
+}
+
+#bookingModal .tab-content {
+  scrollbar-width: thin;
+  scrollbar-color: #003f22 #f8f9fa;
+}
+
+#bookingModal .tab-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+#bookingModal .tab-content::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+#bookingModal .tab-content::-webkit-scrollbar-thumb {
+  background-color: #003f22;
+  border-radius: 4px;
+  border: 2px solid #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  #bookingModal .tab-content {
+    max-height: 50vh !important;
+  }
+
+  #bookingModal .sticky-top {
+    position: relative;
+    top: 0;
+  }
+}
+#bookingModal .modal-content {
+  border-radius: 15px;
+  border: 2px solid #003f22;
+}
+
+#bookingModal .modal-header {
+  background: #003f22;
+  color: white;
+  border-radius: 13px 13px 0 0;
+  border-bottom: none;
+}
+
+#bookingModal .nav-tabs {
+  border-bottom: 2px solid #dee2e6;
+}
+
+#bookingModal .nav-link {
+  color: #6c757d;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .nav-link.active {
+  color: #003f22;
+  background: transparent;
+  border-bottom: 3px solid #003f22;
+}
+
+#bookingModal .nav-link:hover {
+  color: #00713c;
+}
+
+#bookingModal .form-label {
+  font-weight: 500;
+  color: #003f22;
+}
+
+#bookingModal .form-control,
+#bookingModal .form-select {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+}
+
+#bookingModal .form-control:focus,
+#bookingModal .form-select:focus {
+  border-color: #003f22;
+  box-shadow: 0 0 0 0.25rem rgba(0, 63, 34, 0.25);
+}
+
+#bookingModal table {
+  font-size: 0.9rem;
+}
+
+#bookingModal table th {
+  background: #f8f9fa;
+  color: #003f22;
+  font-weight: 600;
+}
+
+#bookingModal .table-hover tbody tr:hover {
+  background-color: rgba(0, 63, 34, 0.05);
+}
+
+#bookingModal .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .btn-success {
+  background-color: #00713c;
+  border-color: #00713c;
+}
+
+#bookingModal .btn-success:hover {
+  background-color: #005a2f;
+  border-color: #005a2f;
+}
+
+@media (max-width: 768px) {
+  #bookingModal .modal-dialog {
+    margin: 1rem;
+  }
+
+  #bookingModal .nav-link {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+#cartCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,215 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #003f22;
+  padding-top: 80px;
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .nav-buttons {
+  padding: 0 10px;
+}
+
+.navButtons {
+  background-color: transparent;
+  color: #fff;
+  text-align: left;
+  margin-bottom: 8px;
+  border: none;
+  margin-top: 6px;
+}
+
+.navButtons:hover {
+  background-color: #00e676;
+  color: #000;
+}
+
+.sidebar .nav-buttons .btn {
+  background-color: transparent;
+  color: #fff;
+  text-align: left;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 8px;
+  border: none;
+}
+
+.sidebar .nav-buttons .btn:hover,
+.sidebar .nav-buttons .btn.active {
+  background-color: #00e676;
+  color: #000;
+}
+
+.logout-btn {
+  padding: 10px;
+}
+
+.logout-btn .btn {
+  width: 100%;
+}
+
+.topbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #003f22;
+  color: white;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1040;
+}
+
+.main-content {
+  margin-left: 220px;
+  margin-top: 72px;
+  padding: 20px;
+}
+
+.topbar .logo img {
+  height: 60px;
+  width: 110px;
+  margin-left: 41px;
+}
+
+.topbar-icons a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.topbar-icons a img:hover {
+  background-color: #00713c;
+}
+
+.sidebar-title {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Add to shop_manager.css */
+.was-validated .form-control:invalid,
+.was-validated .form-control:invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.was-validated .form-control:valid,
+.was-validated .form-control:valid:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+.product-card {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.image-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .product-card {
+    height: 350px;
+  }
+  .product-card .card-img-top {
+    height: 150px;
+  }
+}
+
+/* Search styles */
+#searchInput {
+  border-radius: 25px 0 0 25px;
+}
+
+#clearSearch {
+  border-radius: 0 25px 25px 0;
+  transition: all 0.3s ease;
+}
+
+#clearSearch:hover {
+  background-color: #f8f9fa;
+}
+
+/* Control layout */
+#categoryFilter,
+#sortField,
+#sortOrder {
+  min-width: 160px;
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    margin-bottom: 1rem;
+  }
+
+  #searchInput,
+  #categoryFilter,
+  #sortField,
+  #sortOrder {
+    width: 100% !important;
+  }
+}
+
+/* Badge styling */
+.price-badge::before {
+  content: "₱";
+}
+
+.stock-badge::before {
+  content: "Stock: ";
+}

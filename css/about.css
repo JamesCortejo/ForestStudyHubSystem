@@ -1,0 +1,221 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#navButton {
+  display: block;
+  color: white;
+  padding: 10px;
+  height: 100%;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: #00713c;
+}
+
+#navButton:hover {
+  background-color: #00713c;
+  height: 100%;
+}
+
+#navButton.btnActive {
+  background-color: #00713c;
+}
+
+li {
+  margin-left: 15px;
+  padding-bottom: 10px;
+}
+
+#searchBar {
+  border-radius: 50px;
+  width: 300px;
+}
+
+#navIcon {
+  margin-right: 4px;
+  border-radius: 30px;
+  padding: 15px;
+}
+
+#navIcon:hover {
+  background-color: #00713c;
+}
+
+/* Booking Modal Styles */
+#bookingModal .modal-content {
+  border-radius: 15px;
+  border: 2px solid #003f22;
+}
+
+#bookingModal .modal-header {
+  background: #003f22;
+  color: white;
+  border-radius: 13px 13px 0 0;
+  border-bottom: none;
+}
+
+#bookingModal .nav-tabs {
+  border-bottom: 2px solid #dee2e6;
+}
+
+#bookingModal .nav-link {
+  color: #6c757d;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .nav-link.active {
+  color: #003f22;
+  background: transparent;
+  border-bottom: 3px solid #003f22;
+}
+
+#bookingModal .nav-link:hover {
+  color: #00713c;
+}
+
+#bookingModal .form-label {
+  font-weight: 500;
+  color: #003f22;
+}
+
+#bookingModal .form-control,
+#bookingModal .form-select {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+}
+
+#bookingModal .form-control:focus,
+#bookingModal .form-select:focus {
+  border-color: #003f22;
+  box-shadow: 0 0 0 0.25rem rgba(0, 63, 34, 0.25);
+}
+
+#bookingModal table {
+  font-size: 0.9rem;
+}
+
+#bookingModal table th {
+  background: #f8f9fa;
+  color: #003f22;
+  font-weight: 600;
+}
+
+#bookingModal .table-hover tbody tr:hover {
+  background-color: rgba(0, 63, 34, 0.05);
+}
+
+#bookingModal .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .btn-success {
+  background-color: #00713c;
+  border-color: #00713c;
+}
+
+#bookingModal .btn-success:hover {
+  background-color: #005a2f;
+  border-color: #005a2f;
+}
+
+@media (max-width: 768px) {
+  #bookingModal .modal-dialog {
+    margin: 1rem;
+  }
+
+  #bookingModal .nav-link {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}
+/* Modal header and footer styling */
+.custom-header,
+.custom-footer {
+  background-color: #003f22;
+  color: white;
+  border: none;
+}
+
+/* Section titles */
+.section-title {
+  color: #003f22;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Scrollable table container */
+.table-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Table header */
+.table thead {
+  background-color: #003f22;
+  color: white;
+}
+
+/* Make modal responsive on small devices */
+@media (max-width: 576px) {
+  .modal-xl {
+    width: 95% !important;
+    margin: auto;
+  }
+}
+
+.about-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 15px;
+}
+
+.about-image {
+  object-fit: cover;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2f4f4f;
+}
+
+.highlight {
+  color: #20c997;
+  font-weight: 600;
+}
+
+.icon {
+  margin-right: 10px;
+  color: #20c997;
+}
+
+.commitments li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .about-section {
+    padding: 40px 15px;
+    flex-direction: column;
+  }
+}

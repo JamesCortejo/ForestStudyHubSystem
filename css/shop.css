@@ -1,0 +1,299 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#navButton {
+  display: block;
+  color: white;
+  padding: 10px;
+  height: 100%;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: #00713c;
+}
+
+#navButton:hover {
+  background-color: #00713c;
+  height: 100%;
+}
+
+#navButton.btnActive {
+  background-color: #00713c;
+}
+
+li {
+  margin-left: 15px;
+  padding-bottom: 10px;
+}
+
+#searchBar {
+  border-radius: 50px;
+  width: 300px;
+}
+
+#navIcon {
+  margin-right: 4px;
+  border-radius: 30px;
+  padding: 15px;
+}
+
+#navIcon:hover {
+  background-color: #00713c;
+}
+
+/* Booking Modal Styles */
+#bookingModal .modal-content {
+  border-radius: 15px;
+  border: 2px solid #003f22;
+}
+
+#bookingModal .modal-header {
+  background: #003f22;
+  color: white;
+  border-radius: 13px 13px 0 0;
+  border-bottom: none;
+}
+
+#bookingModal .nav-tabs {
+  border-bottom: 2px solid #dee2e6;
+}
+
+#bookingModal .nav-link {
+  color: #6c757d;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .nav-link.active {
+  color: #003f22;
+  background: transparent;
+  border-bottom: 3px solid #003f22;
+}
+
+#bookingModal .nav-link:hover {
+  color: #00713c;
+}
+
+#bookingModal .form-label {
+  font-weight: 500;
+  color: #003f22;
+}
+
+#bookingModal .form-control,
+#bookingModal .form-select {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+}
+
+#bookingModal .form-control:focus,
+#bookingModal .form-select:focus {
+  border-color: #003f22;
+  box-shadow: 0 0 0 0.25rem rgba(0, 63, 34, 0.25);
+}
+
+#bookingModal table {
+  font-size: 0.9rem;
+}
+
+#bookingModal table th {
+  background: #f8f9fa;
+  color: #003f22;
+  font-weight: 600;
+}
+
+#bookingModal .table-hover tbody tr:hover {
+  background-color: rgba(0, 63, 34, 0.05);
+}
+
+#bookingModal .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .btn-success {
+  background-color: #00713c;
+  border-color: #00713c;
+}
+
+#bookingModal .btn-success:hover {
+  background-color: #005a2f;
+  border-color: #005a2f;
+}
+
+@media (max-width: 768px) {
+  #bookingModal .modal-dialog {
+    margin: 1rem;
+  }
+
+  #bookingModal .nav-link {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Product Card Styling */
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.product-meta {
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+  margin-top: auto;
+}
+
+.price-display h2 {
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+}
+
+.stock-display h3 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.add-to-cart {
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.add-to-cart:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .price-display h2 {
+    font-size: 1.5rem;
+  }
+
+  .stock-display h3 {
+    font-size: 1.3rem;
+  }
+
+  .add-to-cart {
+    font-size: 1rem;
+  }
+}
+
+#cartCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+}
+
+/* Loading skeleton animations */
+.loading-skeleton {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-skeleton .card-img-top,
+.loading-skeleton .card-title,
+.loading-skeleton .card-text,
+.loading-skeleton .badge {
+  background: #e0e0e0;
+  color: transparent;
+  border-radius: 4px;
+}
+
+.loading-skeleton .card-title {
+  width: 60%;
+  height: 1.5rem;
+}
+
+.loading-skeleton .card-text {
+  width: 90%;
+  height: 3rem;
+}
+
+/* Smooth transitions */
+#productsContainer {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.product-card-entry {
+  animation: card-entrance 0.4s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes card-entrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Add this to your CSS file */
+.toast {
+  position: fixed !important;
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9999;
+  min-width: 300px;
+}
+
+/* Optional: Add animation */
+.toast.show {
+  animation: toastSlideIn 0.3s ease-out;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}

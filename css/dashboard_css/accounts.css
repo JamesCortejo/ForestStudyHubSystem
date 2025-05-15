@@ -1,0 +1,268 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #003f22;
+  padding-top: 80px;
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .nav-buttons {
+  padding: 0 10px;
+}
+
+.sidebar .nav-buttons .btn {
+  background-color: transparent;
+  color: #fff;
+  text-align: left;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 8px;
+  border: none;
+}
+
+.sidebar .nav-buttons .btn:hover,
+.sidebar .nav-buttons .btn.active {
+  background-color: #00e676;
+  color: #000;
+}
+
+.logout-btn {
+  padding: 10px;
+}
+
+.logout-btn .btn {
+  width: 100%;
+}
+
+.topbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #003f22;
+  color: white;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1040;
+}
+
+.main-content {
+  margin-left: 220px;
+  margin-top: 72px;
+  padding: 20px;
+}
+
+.topbar .logo img {
+  height: 60px;
+  width: 110px;
+  margin-left: 41px;
+}
+
+.topbar-icons a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.topbar-icons a img:hover {
+  background-color: #00713c;
+}
+
+.sidebar-title {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.container {
+  width: 1200px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Style */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Button Style */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  font-size: 16px;
+}
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Tab Style */
+.nav-tabs {
+  border-bottom: 2px solid #ddd;
+}
+
+.nav-item {
+  margin-bottom: 5px;
+}
+
+.nav-link {
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #555;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.nav-link.active {
+  background-color: #ffffff;
+  border-color: #ddd;
+  font-weight: bold;
+}
+
+/* Table Style */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 8px;
+}
+
+.modal-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-header .btn-close {
+  color: white;
+}
+
+.modal-footer button {
+  border-radius: 5px;
+}
+
+.modal-footer .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.modal-footer .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Form Inputs */
+.form-control {
+  border-radius: 5px;
+}
+
+.form-select {
+  border-radius: 5px;
+}
+
+/* Action Button Styles */
+.btn-action {
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.btn-action.edit {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-action.edit:hover {
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+
+.btn-action.delete {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-action.delete:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+#searchUsers {
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 12px 20px;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-bar::after {
+  content: "\1F50D";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+.toast {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

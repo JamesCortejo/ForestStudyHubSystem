@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #003f22;
+  padding-top: 80px;
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .nav-buttons {
+  padding: 0 10px;
+}
+
+.sidebar .nav-buttons .btn {
+  background-color: transparent;
+  color: #fff;
+  text-align: left;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 8px;
+  border: none;
+}
+
+.sidebar .nav-buttons .btn:hover,
+.sidebar .nav-buttons .btn.active {
+  background-color: #00e676;
+  color: #000;
+}
+
+.logout-btn {
+  padding: 10px;
+}
+
+.logout-btn .btn {
+  width: 100%;
+}
+
+.topbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #003f22;
+  color: white;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1040;
+}
+
+.main-content {
+  margin-left: 220px;
+  margin-top: 72px;
+  padding: 20px;
+}
+
+.topbar .logo img {
+  height: 60px;
+  width: 110px;
+  margin-left: 41px;
+}
+
+.topbar-icons a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.topbar-icons a img:hover {
+  background-color: #00713c;
+}
+
+.sidebar-title {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.overview-card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.overview-card:hover {
+  transform: scale(1.02);
+}
+
+.overview-icon {
+  font-size: 2.5rem;
+  opacity: 0.8;
+}
+
+.overview-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.card-label {
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.order-card {
+  font-size: 0.95rem;
+}
+
+.btn-sm-custom {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.product-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.product-card {
+  display: inline-block;
+  vertical-align: top;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  width: 160px;
+  margin-right: 10px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+.product-card:last-child {
+  margin-right: 0;
+}
+
+.card p {
+  color: black;
+}
+
+.card h5 {
+  color: black;
+}
+
+.btn-sm-custom {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+}

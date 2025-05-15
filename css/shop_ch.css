@@ -1,0 +1,327 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#navButton {
+  display: block;
+  color: white;
+  padding: 10px;
+  height: 100%;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: #00713c;
+}
+
+#navButton:hover {
+  background-color: #00713c;
+  height: 100%;
+}
+
+#navButton.btnActive {
+  background-color: #00713c;
+}
+
+li {
+  margin-left: 15px;
+  padding-bottom: 10px;
+}
+
+#searchBar {
+  border-radius: 50px;
+  width: 300px;
+}
+
+#navIcon {
+  margin-right: 4px;
+  border-radius: 30px;
+  padding: 15px;
+}
+
+#navIcon:hover {
+  background-color: #00713c;
+}
+
+/* Booking Modal Styles */
+#bookingModal .modal-content {
+  border-radius: 15px;
+  border: 2px solid #003f22;
+}
+
+#bookingModal .modal-header {
+  background: #003f22;
+  color: white;
+  border-radius: 13px 13px 0 0;
+  border-bottom: none;
+}
+
+#bookingModal .nav-tabs {
+  border-bottom: 2px solid #dee2e6;
+}
+
+#bookingModal .nav-link {
+  color: #6c757d;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .nav-link.active {
+  color: #003f22;
+  background: transparent;
+  border-bottom: 3px solid #003f22;
+}
+
+#bookingModal .nav-link:hover {
+  color: #00713c;
+}
+
+#bookingModal .form-label {
+  font-weight: 500;
+  color: #003f22;
+}
+
+#bookingModal .form-control,
+#bookingModal .form-select {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+}
+
+#bookingModal .form-control:focus,
+#bookingModal .form-select:focus {
+  border-color: #003f22;
+  box-shadow: 0 0 0 0.25rem rgba(0, 63, 34, 0.25);
+}
+
+#bookingModal table {
+  font-size: 0.9rem;
+}
+
+#bookingModal table th {
+  background: #f8f9fa;
+  color: #003f22;
+  font-weight: 600;
+}
+
+#bookingModal .table-hover tbody tr:hover {
+  background-color: rgba(0, 63, 34, 0.05);
+}
+
+#bookingModal .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+#bookingModal .btn-success {
+  background-color: #00713c;
+  border-color: #00713c;
+}
+
+#bookingModal .btn-success:hover {
+  background-color: #005a2f;
+  border-color: #005a2f;
+}
+
+@media (max-width: 768px) {
+  #bookingModal .modal-dialog {
+    margin: 1rem;
+  }
+
+  #bookingModal .nav-link {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+.container-wrapper {
+  padding: 2rem 0;
+}
+
+/* Order Summary Section */
+.order-summary {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.product-info {
+  flex: 1;
+}
+
+/* Payment Section */
+.payment-section {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+}
+
+.gcash-qr {
+  text-align: center;
+  margin: 1.5rem 0;
+  display: none;
+}
+
+.gcash-qr img {
+  max-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .container-wrapper {
+    flex-direction: column;
+  }
+
+  .order-summary,
+  .payment-section {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .payment-section {
+    position: static;
+    margin-top: 2rem;
+  }
+}
+
+/* Form Elements */
+.form-select {
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+#notes {
+  resize: none;
+}
+
+.btn-finalize {
+  background: #003f22;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-finalize:hover {
+  background: #002612;
+  transform: translateY(-2px);
+}
+
+.total-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #003f22;
+  padding: 1rem 0;
+  border-top: 2px solid #eee;
+  margin-top: 1rem;
+}
+
+.order-summary {
+  height: 580px; /* Fixed height */
+  overflow: hidden;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+}
+
+#cartItems {
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.total-price {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btn-finalize {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-finalize:hover {
+  background-color: #0056b3;
+}
+
+/* Modal header and footer styling */
+.custom-header,
+.custom-footer {
+  background-color: #003f22;
+  color: white;
+  border: none;
+}
+
+/* Section titles */
+.section-title {
+  color: #003f22;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Scrollable table container */
+.table-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Table header */
+.table thead {
+  background-color: #003f22;
+  color: white;
+}
+
+/* Make modal responsive on small devices */
+@media (max-width: 576px) {
+  .modal-xl {
+    width: 95% !important;
+    margin: auto;
+  }
+}

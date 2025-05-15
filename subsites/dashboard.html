@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../bootstrap-5.2.3-dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/dashboard_css/dshboard.css" />
+
+  <style>
+    .product-image {
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #topProductsCarousel {
+      min-height: 200px;
+    }
+
+    .carousel-item {
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="logo">
+      <img src="../resources/studyhubLogoHomepage.jpg" alt="Logo" />
+    </div>
+    <div class="topbar-icons d-flex align-items-center gap-2">
+      <a href="#"><img src="../resources/icons/bell-3-xxl.png" alt="Notification" /></a>
+      <a href="#"><img src="../resources/icons/settings-10-xxl.png" alt="Settings" /></a>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div>
+      <div class="sidebar-title">DASHBOARD</div>
+      <div class="nav-buttons">
+        <a href="#" class="btn btn-success active w-100 mb-3">Overview</a>
+        <a href="dashboard_subpage/timer_manager.html" class="btn btn-outline-light w-100 mb-3">Timer Manager</a>
+        <a href="dashboard_subpage/shop_manager.html" class="btn btn-outline-light w-100 mb-3">Shop Manager</a>
+        <a href="dashboard_subpage/accounts.html" class="btn btn-outline-light w-100 mb-3">Accounts</a>
+        <a href="dashboard_subpage/reports.html" class="btn btn-outline-light w-100 mb-3">Reports</a>
+      </div>
+    </div>
+    <div class="logout-btn">
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        Log-out
+      </button>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <h2 class="mb-4 text-center">Dashboard Overview</h2>
+
+      <!-- First Row -->
+      <div class="row g-4 justify-content-center">
+        <!-- Study Cubicle Sessions -->
+        <div class="col-md-6">
+          <div class="card text-white bg-primary overview-card p-4 text-center  w-100">
+            <div class="overview-icon mb-2">📚</div>
+            <div id="cubicleSessions" class="overview-value"></div>
+            <div class="card-label">Current Sessions in Study Cubicles</div>
+          </div>
+        </div>
+
+        <!-- Study Room Sessions -->
+        <div class="col-md-6">
+          <div class="card text-white bg-success overview-card p-4 text-center">
+            <div class="overview-icon mb-2">🏫</div>
+            <div id="roomSessions" class="overview-value"></div>
+            <div class="card-label">Current Sessions in Study Rooms</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Row: Session Bills -->
+      <div class="row g-4 justify-content-center mt-3">
+        <!-- Total Cubicle Bills -->
+        <div class="col-md-4">
+          <div class="card text-white bg-dark overview-card p-4 text-center">
+            <div class="overview-icon mb-2">💸</div>
+            <div id="cubicleBills" class="overview-value">₱</div>
+            <div class="card-label">Total Sales from Study Cubicles Sessions</div>
+          </div>
+        </div>
+
+        <!-- Total Study Room Bills -->
+        <div class="col-md-4">
+          <div class="card text-white bg-secondary overview-card p-4 text-center">
+            <div class="overview-icon mb-2">🧾</div>
+            <div id="roomBills" class="overview-value">₱</div>
+            <div class="card-label">Total Sales from Study Rooms Sessions</div>
+          </div>
+        </div>
+
+        <!-- Shop Sales -->
+        <div class="col-md-4">
+          <div class="card text-white bg-warning overview-card p-4 text-center">
+            <div class="overview-icon mb-2">🛒</div>
+            <div id="shopSales" class="overview-value">₱</div>
+            <div class="card-label">Sales in Shop (This Day)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h3 class="text-center mb-4">Statistics Overview</h3>
+      <div class="row g-4">
+
+        <!-- Session Distribution Chart -->
+        <div class="col-md-6">
+          <div class="card p-3 shadow-sm">
+            <h5 class="text-center">User Session Distribution</h5>
+            <canvas id="sessionDistributionChart" height="200"></canvas>
+          </div>
+        </div>
+        <!-- Sales Breakdown Chart -->
+        <div class="col-md-6">
+          <div class="card p-3 shadow-sm">
+            <h5 class="text-center">Today's Sales Breakdown</h5>
+            <canvas id="salesBreakdownChart" height="200"></canvas>
+          </div>
+        </div>
+
+        <!-- Hourly Usage Chart -->
+        <div class="col-md-6">
+          <div class="card p-3 shadow-sm">
+            <h5 class="text-center">Hourly Usage Trends</h5>
+            <canvas id="hourlyUsageChart" height="200"></canvas>
+          </div>
+        </div>
+
+        <!-- Top Purchased Items Chart -->
+        <div class="col-md-6">
+          <div class="card p-3 shadow-sm">
+            <h5 class="text-center">Top Purchased Items</h5>
+            <canvas id="topItemsChart" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Third Row: Total Products and Top 3 Best-Selling Products -->
+    <div class="row g-4 justify-content-center mt-3">
+      <!-- Total Products in Shop -->
+      <div class="col-md-4">
+        <div class="card text-white overview-card p-4 text-center" style="height: 100%;">
+          <div style="padding-top: 90px;"></div>
+          <div class="overview-icon mb-2">📦</div>
+          <div id="totalProducts" class="overview-value" style="color: black;"></div>
+          <div class="card-label" style="color: black;">Total Products in Shop</div>
+        </div>
+      </div>
+
+      <!-- Top 3 Best-Selling Products -->
+      <div class="col-md-8">
+        <div class="card text-white overview-card p-4">
+          <h5 class="text-center mb-4">🏆 Top 3 Best-Selling Products</h5>
+          <div id="topProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner text-center">
+              <!-- Carousel items will be dynamically added here through js -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#topProductsCarousel"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#topProductsCarousel"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Booking Overview Column -->
+      <div class="col-md-6">
+        <div class="container mt-5">
+          <h3 class="text-center mb-4">Booking Overview</h3>
+          <div class="row g-4">
+
+            <!-- Total Bookings -->
+            <div class="col-12">
+              <div class="card text-white shadow-sm w-100" style="background-color: #00c267;">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Total Bookings</h5>
+                  <p class="display-6" id="totalBookings"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Bookings -->
+            <div class="col-12">
+              <div class="card text-white shadow-sm w-100" style="background-color: #00df77;">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Pending</h5>
+                  <p class="display-6" id="pendingBookings"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Approved Bookings -->
+            <div class="col-12">
+              <div class="card text-white shadow-sm w-100" style="background-color: #00ff88;">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Approved</h5>
+                  <p class="display-6" id="approvedBookings"></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- User Purchases Overview Column -->
+      <div class="col-md-6">
+        <div class="container mt-5">
+          <h3 class="text-center mb-4">User Purchases Overview</h3>
+          <div class="row g-4">
+
+            <!-- Total Purchases -->
+            <div class="col-12">
+              <div class="card text-white shadow-sm w-100">
+                <div class="card-body text-center" style="background-color: #00c267;">
+                  <h5 class="card-title">Total Purchases</h5>
+                  <p class="display-6" id="totalPurchases"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Purchases -->
+            <div class="col-12">
+              <div class="card text-white shadow-sm w-100">
+                <div class="card-body text-center" style="background-color: #00df77;">
+                  <h5 class="card-title">Pending</h5>
+                  <p class="display-6" id="pendingPurchases"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confirmed Purchases -->
+            <div class="col-12">
+              <div class="card text-white shadow-sm w-100">
+                <div class="card-body text-center" style="background-color: #00ff88;">
+                  <h5 class="card-title">Confirmed</h5>
+                  <p class="display-6" id="confirmedPurchases"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Logout Confirmation Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Are you sure you want to log out?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-danger" onclick="window.logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="dashboard_subpage/backend/chart.js"></script>
+  <script>
+    window.logout = function () {
+      fetch("../php/logout.php", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache'
+        }
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('Logout failed');
+          window.location.href = '../index.php?logout=' + Date.now();
+        })
+        .catch(error => {
+          console.error('Logout error:', error);
+          window.location.href = '../index.php?logout=force';
+        });
+    };
+  </script>
+</body>
+
+</html>
