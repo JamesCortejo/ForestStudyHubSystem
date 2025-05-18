@@ -40,10 +40,18 @@ $siteKey = $_ENV['RECAPTCHA_SITE_KEY'] ?? getenv('RECAPTCHA_SITE_KEY');
         <!-- Right Panel -->
         <div class="right-panel">
             <?php if (isset($_SESSION['success'])): ?>
-                <div class="alert-container">
+                <div class="alert-container mt-2 mb-2">
                     <div class="alert alert-success" role="alert">
                         <?= $_SESSION['success'];
                         unset($_SESSION['success']); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert-container mt-2 mb-2">
+                    <div class="alert alert-danger" role="alert">
+                        <?= $_SESSION['error'];
+                        unset($_SESSION['error']); ?>
                     </div>
                 </div>
             <?php endif; ?>
