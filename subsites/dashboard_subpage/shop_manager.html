@@ -49,6 +49,30 @@
       transition: transform 0.2s;
       /* Keep existing shop product card styles */
     }
+
+    /* Add to your existing CSS */
+    #adminNotificationBadge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #dc3545;
+      color: white;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    /* If using a parent container like a button */
+    .notification-container {
+      position: relative;
+      display: inline-block;
+    }
   </style>
 </head>
 
@@ -63,8 +87,24 @@
       </a>
       <a class="btn btn-primary navButtons" data-bs-toggle="modal" data-bs-target="#addProductManagerModal">Add
         Product</a>
-      <a href="#"><img src="../../resources/icons/bell-3-xxl.png" alt="Notification" /></a>
-      <a href="#"><img src="../../resources/icons/settings-10-xxl.png" alt="Settings" /></a>
+      <div class="dropdown" style="position: relative; margin-right: 20px;">
+        <a href="#" id="adminNotificationsButton" role="button" data-bs-toggle="dropdown">
+          <img src="../../resources/icons/bell-3-xxl.png" alt="Admin Notifications" width="40" height="40">
+          <span id="adminNotificationBadge" class="d-none"></span>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 350px;">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">Admin Alerts</h5>
+            <div>
+              <button class="btn btn-sm btn-outline-danger" id="adminClearNotifications">
+                Clear All
+              </button>
+            </div>
+          </div>
+          <div id="adminNotificationsList" class="mb-2" style="max-height: 300px; overflow-y: auto;"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -468,6 +508,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="backend/product_manager.js"></script>
   <script src="backend/admin_orders.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="backend/admin_notification.js"></script>
   <script>
     window.logout = function () {
       fetch("../../php/logout.php", {

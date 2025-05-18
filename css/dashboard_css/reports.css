@@ -105,99 +105,150 @@ body {
   font-weight: bold;
   letter-spacing: 2px;
 }
-
-.report-section {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-h2 {
+/* Modern Table Styling */
+.report-main-title {
   color: #2c3e50;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f2f5;
 }
 
-.btn-download {
-  background-color: #28a745;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s;
-}
-
-.btn-download:hover {
-  background-color: #218838;
-}
-
-table {
-  width: 100%;
-  margin-bottom: 1rem;
-  background-color: transparent;
-}
-
-th {
-  background-color: #2c3e50;
-  color: white;
-  padding: 12px;
-}
-
-td {
-  padding: 10px;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.table-responsive {
-  overflow-x: auto;
-}
 .report-section {
-  margin-bottom: 40px;
-  padding: 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  transition: transform 0.2s ease;
 }
 
-/* Add distinction between different session types */
-#room-sessions-table table th {
-  background-color: #4a86e8;
+.report-section:hover {
+  transform: translateY(-2px);
 }
 
-#cubicle-sessions-table table th {
-  background-color: #50b848;
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-/* Add these styles */
-.report-section .table-responsive {
-  max-height: 400px; /* Adjust this value as needed */
-  overflow-y: auto;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  margin: 15px 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.report-title {
+  color: #34495e;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* Fix table header position */
-.report-section table thead th {
-  position: sticky;
-  top: 0;
-  background-color: #f8f9fa;
-  z-index: 1;
+.modern-table-container {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fafbfc;
 }
 
-/* Optional: Add scrollbar styling */
-.report-section .table-responsive::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.sleek-table-wrapper {
+  padding: 1rem;
 }
 
-.report-section .table-responsive::-webkit-scrollbar-thumb {
-  background-color: #c1c1c1;
-  border-radius: 4px;
+table.dataTable {
+  border-collapse: collapse;
+  --dt-row-borderColor: #f0f2f5;
+  --dt-header-bg: #f8f9fa;
 }
 
-.report-section .table-responsive::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
+.dataTables_wrapper .dataTables_filter {
+  margin-bottom: 1.5rem;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239299a3' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
+  outline: none;
+}
+
+table.dataTable thead th {
+  background: var(--dt-header-bg);
+  color: #495057;
+  font-weight: 600;
+  border-bottom: 2px solid var(--dt-row-borderColor) !important;
+  padding: 1rem;
+}
+
+table.dataTable tbody td {
+  padding: 0.875rem;
+  border-color: var(--dt-row-borderColor);
+  vertical-align: middle;
+}
+
+table.dataTable tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+table.dataTable tbody tr:hover {
+  background-color: #f8fafb !important;
+}
+
+/* Modern Download Button */
+.modern-download-btn {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.2);
+}
+
+.modern-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+  background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+}
+
+.modern-download-btn i {
+  font-size: 1.1rem;
+}
+
+/* Pagination Styling */
+.dataTables_wrapper .dataTables_paginate {
+  margin-top: 1.5rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: 6px !important;
+  margin: 0 0.25rem;
+  border: 1px solid #dee2e6 !important;
+  transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: #f8f9fa !important;
+  border-color: #dee2e6 !important;
 }

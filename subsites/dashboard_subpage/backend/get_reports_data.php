@@ -1,66 +1,108 @@
 <?php
 require_once __DIR__ . '/../../../includes/db.php';
 
-if (!isset($_POST['type'])) {
-    die('Invalid request');
-}
-
-$type = $_POST['type'];
-$tableHtml = '';
+header('Content-Type: text/html');
 
 try {
+    if (!isset($_POST['type'])) {
+        throw new Exception('Invalid request');
+    }
+
+    $type = $_POST['type'];
+    $query = '';
+    $columns = [];
+
     switch ($type) {
         case 'orders':
-            $stmt = $pdo->query("SELECT * FROM orders WHERE status = 'confirmed'");
-            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $tableHtml = generateTableHtml($data, ['id', 'user_id', 'total_amount', 'payment_method', 'status', 'created_at']);
+            $query = "SELECT 
+                        id AS order_id, 
+                        user_id, 
+                        total_amount, 
+                        payment_method, 
+                        status, 
+                        created_at 
+                      FROM orders 
+                      WHERE status = 'confirmed'";
+            $columns = ['order_id', 'user_id', 'total_amount', 'payment_method', 'status', 'created_at'];
             break;
 
         case 'cubicle_bookings':
-            $stmt = $pdo->query("SELECT * FROM cubicle_bookings WHERE status = 'accepted'");
-            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $tableHtml = generateTableHtml($data, ['booking_id', 'user_id', 'cubicle_id', 'duration', 'booking_time', 'status']);
+            $query = "SELECT 
+                        booking_id, 
+                        user_id, 
+                        cubicle_id, 
+                        booking_time AS start_time, 
+                        created_at AS end_time, 
+                        status 
+                      FROM cubicle_bookings 
+                      WHERE status = 'accepted'";
+            $columns = ['booking_id', 'user_id', 'cubicle_id', 'start_time', 'end_time', 'status'];
             break;
 
         case 'room_bookings':
-            $stmt = $pdo->query("SELECT * FROM room_bookings WHERE status = 'accepted'");
-            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $tableHtml = generateTableHtml($data, ['booking_id', 'user_id', 'room_id', 'duration', 'booking_time', 'status']);
+            $query = "SELECT 
+                        booking_id, 
+                        user_id, 
+                        room_id, 
+                        booking_time AS start_time, 
+                        created_at AS end_time, 
+                        status 
+                      FROM room_bookings 
+                      WHERE status = 'accepted'";
+            $columns = ['booking_id', 'user_id', 'room_id', 'start_time', 'end_time', 'status'];
             break;
 
         case 'room_sessions':
-            $stmt = $pdo->query("SELECT * FROM study_room_sessions WHERE status = 'expired'");
-            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $tableHtml = generateTableHtml($data, ['session_id', 'room_id', 'start_time', 'end_time', 'time_remaining', 'total_bill']);
+            $query = "SELECT 
+                        session_id, 
+                        room_id, 
+                        start_time, 
+                        end_time, 
+                        total_bill 
+                      FROM study_room_sessions 
+                      WHERE status = 'expired'";
+            $columns = ['session_id', 'room_id', 'start_time', 'end_time', 'total_bill'];
             break;
 
         case 'cubicle_sessions':
-            $stmt = $pdo->query("SELECT * FROM timer_sessions WHERE status = 'expired'");
-            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $tableHtml = generateTableHtml($data, ['id', 'user_id', 'cubicle_id', 'start_time', 'end_time', 'time_remaining', 'total_bill']);
+            $query = "SELECT 
+                        id AS session_id, 
+                        cubicle_id, 
+                        user_id, 
+                        start_time, 
+                        end_time, 
+                        total_bill 
+                      FROM timer_sessions 
+                      WHERE status = 'expired'";
+            $columns = ['session_id', 'cubicle_id', 'user_id', 'start_time', 'end_time', 'total_bill'];
             break;
-
-        default:
-            die('Invalid report type');
     }
 
-    echo $tableHtml;
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch associative array
+
+    echo generateTableHtml($data, $columns);
 
 } catch (PDOException $e) {
-    die("Database error: " . $e->getMessage());
+    echo '<div class="alert alert-danger">Database Error: ' . htmlspecialchars($e->getMessage()) . '</div>';
+    error_log('Database error: ' . $e->getMessage());
+} catch (Exception $e) {
+    error_log('Error: ' . $e->getMessage());
+    echo '<div class="alert alert-danger">' . htmlspecialchars($e->getMessage()) . '</div>';
 }
 
 function generateTableHtml($data, $columns)
 {
     if (empty($data)) {
-        return '<p>No records found</p>';
+        return '<div class="alert alert-info">No records found for this report</div>';
     }
 
-    $html = '<div class="table-responsive">'; // Already in your code
-    $html .= '<table class="table table-striped">';
+    $html = '<table class="table table-striped table-hover dt-init">';
+    $html .= '<thead><tr>';
 
     foreach ($columns as $column) {
-        $html .= '<th>' . ucwords(str_replace('_', ' ', $column)) . '</th>';
+        $html .= '<th>' . htmlspecialchars(ucwords(str_replace('_', ' ', $column))) . '</th>';
     }
 
     $html .= '</tr></thead><tbody>';
@@ -68,11 +110,14 @@ function generateTableHtml($data, $columns)
     foreach ($data as $row) {
         $html .= '<tr>';
         foreach ($columns as $column) {
-            $html .= '<td>' . htmlspecialchars($row[$column] ?? '') . '</td>';
+            // Check if column exists in the row to avoid "N/A"
+            $value = isset($row[$column]) ? $row[$column] : 'N/A';
+            // Handle empty values
+            $html .= '<td>' . (!empty($value) ? htmlspecialchars($value) : '—') . '</td>';
         }
         $html .= '</tr>';
     }
 
-    $html .= '</tbody></table></div>';
+    $html .= '</tbody></table>';
     return $html;
 }

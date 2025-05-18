@@ -69,6 +69,7 @@ $currentUser = verifyUserSession();
                             aria-expanded="false">
                             <img id="navIcon" src="../../resources/icons/bell-3-xxl.png" alt="Notifications" width="50"
                                 height="50" />
+                            <span id="notificationBadge"></span>
                         </a>
 
                         <!-- Notifications Panel -->
@@ -153,17 +154,17 @@ $currentUser = verifyUserSession();
                         class="highlight">TimeWise</span> — an easy-to-use online system that lets you:
                 </p>
                 <ul class="list-unstyled">
-                    <li><span class="icon">📅</span>Book spaces in real-time</li>
-                    <li><span class="icon">⏱️</span>Track your time efficiently</li>
-                    <li><span class="icon">☕</span>Order coffee or snacks without leaving your desk</li>
+                    <li><span class="icon"></span>Book spaces in real-time</li>
+                    <li><span class="icon"></span>Track your time efficiently</li>
+                    <li><span class="icon"></span>Order coffee or snacks without leaving your desk</li>
                 </ul>
                 <p>No more lines, no more confusion — just focus on what matters most to you.</p>
 
                 <h5 class="mt-4 mb-3">We’re committed to:</h5>
                 <ul class="list-unstyled commitments">
-                    <li><span class="icon">✅</span>Providing a calm, organized environment</li>
-                    <li><span class="icon">✅</span>Simplifying your experience with smart tools</li>
-                    <li><span class="icon">✅</span>Helping you work smarter and recharge better</li>
+                    <li><span class="icon"></span>Providing a calm, organized environment</li>
+                    <li><span class="icon"></span>Simplifying your experience with smart tools</li>
+                    <li><span class="icon"></span>Helping you work smarter and recharge better</li>
                 </ul>
 
                 <p class="mt-4">

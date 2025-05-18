@@ -37,8 +37,6 @@ $currentUser = verifyUserSession();
             display: block;
         }
 
-        <style>
-
         /* Modal header and footer styling */
         .custom-header,
         .custom-footer {
@@ -77,7 +75,23 @@ $currentUser = verifyUserSession();
                 margin: auto;
             }
         }
-    </style>
+
+        .notification-badge {
+            position: relative;
+        }
+
+        #notificationBadge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            display: none;
+        }
     </style>
 </head>
 
@@ -127,6 +141,7 @@ $currentUser = verifyUserSession();
                             aria-expanded="false">
                             <img id="navIcon" src="../../resources/icons/bell-3-xxl.png" alt="Notifications" width="50"
                                 height="50" />
+                            <span id="notificationBadge"></span>
                         </a>
 
                         <!-- Notifications Panel -->
@@ -313,8 +328,8 @@ $currentUser = verifyUserSession();
                         <div class="mb-3">
                             <label class="form-label">Payment Method</label>
                             <select class="form-select" id="paymentMethod">
-                                <option value="cash">Cash</option>
-                                <option value="gcash">GCash</option>
+                                <option value="Cash">Cash</option>
+                                <option value="G-cash">GCash</option>
                             </select>
                         </div>
 
@@ -559,7 +574,7 @@ $currentUser = verifyUserSession();
             const qrContainer = document.getElementById('gcashQrContainer');
 
             paymentMethod.addEventListener('change', (e) => {
-                if (e.target.value === 'gcash') {
+                if (e.target.value === 'G-cash') {
                     qrContainer.classList.remove('d-none');
                 } else {
                     qrContainer.classList.add('d-none');

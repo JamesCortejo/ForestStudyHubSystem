@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initializeNotificationSystem();
   setupRealTimeSync();
   requestNotificationPermission();
+  updateNotificationBadge();
 });
 
 let audioEnabled = true;
@@ -55,6 +56,7 @@ function initializeNotificationSystem() {
             );
             li.classList.remove("unread");
             updateNotificationPanel();
+            updateNotificationBadge(); // Update badge when marking as read
           }
         });
 
@@ -68,6 +70,7 @@ function initializeNotificationSystem() {
       notifications = [];
       localStorage.setItem("notifications", JSON.stringify(notifications));
       updateNotificationPanel();
+      updateNotificationBadge(); // Update badge when clearing
     });
   }
 
@@ -91,6 +94,7 @@ function initializeNotificationSystem() {
     if (notifications.length > 20) notifications.length = 20;
     localStorage.setItem("notifications", JSON.stringify(notifications));
     updateNotificationPanel();
+    updateNotificationBadge(); // Update badge on new notification
 
     if ((userSettings.sound || options.force) && options.sound !== false) {
       playNotificationSound();
@@ -102,6 +106,20 @@ function initializeNotificationSystem() {
   };
 
   updateNotificationPanel();
+}
+
+// Notification badge functions
+function updateNotificationBadge() {
+  const badge = document.getElementById("notificationBadge");
+  if (!badge) return;
+
+  const unreadCount = notifications.filter((n) => !n.read).length;
+  badge.textContent = unreadCount > 0 ? unreadCount : "";
+  badge.style.display = unreadCount > 0 ? "block" : "none";
+}
+
+function getUnreadCount() {
+  return notifications.filter((n) => !n.read).length;
 }
 
 function handleBrowserNotification(title, message) {
@@ -134,6 +152,7 @@ function setupRealTimeSync() {
     if (event.key === "notifications") {
       notifications = JSON.parse(event.newValue || "[]");
       updateNotificationPanel();
+      updateNotificationBadge(); // Sync badge across tabs
     }
   });
 }
@@ -173,5 +192,6 @@ document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
     notifications = JSON.parse(localStorage.getItem("notifications") || "[]");
     updateNotificationPanel();
+    updateNotificationBadge(); // Update badge when returning to tab
   }
 });

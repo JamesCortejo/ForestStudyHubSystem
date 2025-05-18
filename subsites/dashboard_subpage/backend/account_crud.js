@@ -60,23 +60,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     users.forEach((user) => {
       const row = `
-                <tr>
-                    <td>${user.firstname} ${user.lastname}</td>
-                    <td>${user.username}</td>
-                    <td>${user.email}</td>
-                    <td>${user.phone_number || "-"}</td>
-                    <td>${user.role}</td>
-                    <td>${user.status === "active" ? "Online" : "Offline"}</td>
-                    <td>
-                        <button class="btn btn-sm btn-primary edit-btn" data-id="${
-                          user.id
-                        }">Edit</button>
-                        <button class="btn btn-sm btn-danger delete-btn" data-id="${
-                          user.id
-                        }">Delete</button>
-                    </td>
-                </tr>
-            `;
+      <tr>
+        <td>${user.firstname} ${user.lastname}</td>
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+        <td>${user.phone_number || "-"}</td>
+        <td>${user.role}</td>
+        <td>${user.status === "active" ? "Online" : "Offline"}</td>
+        <td>
+          <button class="btn btn-sm btn-primary edit-btn" data-id="${
+            user.id
+          }">Edit</button>
+          <button class="btn btn-sm btn-danger delete-btn" data-id="${
+            user.id
+          }">Delete</button>
+        </td>
+      </tr>
+    `;
 
       if (user.status === "active") {
         onlineList.insertAdjacentHTML("beforeend", row);

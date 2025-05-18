@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
     $phone_number = trim($_POST["phone_number"]);
+    $address = trim($_POST["address"]);
 
     if (strlen($password) < 8) {
         $_SESSION['error'] = "Password must be at least 8 characters long.";
@@ -55,9 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $pdo->prepare("INSERT INTO users (firstname, lastname, username, email, phone_number, password, status, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    
-    if ($stmt->execute([$firstname, $lastname, $username, $email, $phone_number, $hashedPassword, 'inactive', 'user'])) {
+    $stmt = $pdo->prepare("INSERT INTO users (firstname, lastname, username, email, phone_number, address, password, status, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    if ($stmt->execute([$firstname, $lastname, $username, $email, $phone_number, $address, $hashedPassword, 'inactive', 'user'])) {
         $_SESSION['success'] = "Your account has been created, you can now log in.";
         header('Location: ../index.php');
         exit();

@@ -61,6 +61,23 @@ $currentUser = verifyUserSession();
             margin: auto;
         }
     }
+
+    .notification-badge {
+        position: relative;
+    }
+
+    #notificationBadge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ff4444;
+        color: white;
+        border-radius: 50%;
+        padding: 3px 8px;
+        font-size: 12px;
+        font-weight: bold;
+        display: none;
+    }
 </style>
 
 <body>
@@ -113,6 +130,7 @@ $currentUser = verifyUserSession();
                             aria-expanded="false">
                             <img id="navIcon" src="../../resources/icons/bell-3-xxl.png" alt="Notifications" width="50"
                                 height="50" />
+                            <span id="notificationBadge"></span>
                         </a>
 
                         <!-- Notifications Panel -->
